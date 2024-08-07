@@ -93,9 +93,9 @@ def survey_complete():
     user_key = session['user_key']
     user_filename = 'UserAnswer.db'
     conn = db_connection(user_filename)
-    qa = conn.execute('SELECT baumann_type FROM user WHERE user_key =?', (user_key, )).fetchone()
+    qa = conn.execute('SELECT baumann_type, meta_baumann_type FROM user WHERE user_key =?', (user_key, )).fetchone()
     conn.close()
-    return render_template('survey_complete.html', baumann_type = qa['baumann_type'])
+    return render_template('survey_complete.html', baumann_type = qa['baumann_type'], meta_baumann_type = qa['meta_baumann_type'])
 
 @app.route('/logout',methods=['GET'])
 def logout():

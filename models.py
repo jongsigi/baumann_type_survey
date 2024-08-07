@@ -9,6 +9,7 @@ class User(db.Model):
     gender = db.Column(db.String(10), nullable=False)
     age_group = db.Column(db.String(10), nullable=False)
     baumann_type = db.Column(db.String(10), nullable=True)
+    meta_baumann_type = db.Column(db.String(10), nullable=True)
 
 class UserAnswer(db.Model):
     __tablename__ = 'user_answer'
