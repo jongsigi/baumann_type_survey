@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Display</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="screen">
+            <div class="screen__content">
+                <h1 class="question-title">Question</h1>
+                <p class="question-text">{{ question }}</p>
+                <form method="post" class="question-form">
+                    {% for answer in answers %}
+                    <div class="question-form__field">
+                        <input type="radio" id="answer_{{ loop.index0 }}" name="answer" value="{{ loop.index0 }}"
+                            aria-labelledby="answer_label_{{ loop.index0 }}" class="question-form__input">
+                        <label id="answer_label_{{ loop.index0 }}" for="answer_{{ loop.index0 }}"
+                            class="question-form__label">{{ answer }}</label>
+                    </div>
+                    {% endfor %}
+                    <button type="submit" class="button question-form__submit">
+                        <span class="button__text">Submit</span>
+                        <i class="button__icon fas fa-chevron-right"></i>
+                    </button>
+                </form>
+            </div>
+            <div class="screen__background">
+                <span class="screen__background__shape screen__background__shape4"></span>
+                <span class="screen__background__shape screen__background__shape3"></span>
+                <span class="screen__background__shape screen__background__shape2"></span>
+                <span class="screen__background__shape screen__background__shape1"></span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

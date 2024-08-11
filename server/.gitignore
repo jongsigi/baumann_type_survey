@@ -1,0 +1,9 @@
+# 셀프 할일 기록 목록용 
+수정사항기록.txt
+
+
+# database
+UserAnswer.db
+
+# venv 무시
+venv/

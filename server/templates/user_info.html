@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='user_info.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="screen">
+            <div class="screen__content">
+                <form method="post" action="/user_info" class="user-info-form">
+                    <div class="user-info__field">
+                        <i class="login__icon fas fa-venus-mars"></i>
+                        <label for="gender" class="user-info__label">Gender:</label>
+                        <select id="gender" name="gender" class="user-info__input" required>
+                            <option value="male">남성</option>
+                            <option value="female">여성</option>
+                        </select>
+                    </div>
+                    <div class="user-info__field">
+                        <i class="login__icon fas fa-birthday-cake"></i>
+                        <label for="age" class="user-info__label">Age:</label>
+                        <div class="user-info__age-group">
+                            <select id="age_decade" name="age_decade" class="user-info__input user-info__input--age" required>
+                                <option value="10">10대</option>
+                                <option value="20">20대</option>
+                                <option value="30">30대</option>
+                                <option value="40">40대</option>
+                                <option value="50">50대</option>
+                                <option value="60">60대</option>
+                            </select>
+                            <select id="age_part" name="age_part" class="user-info__input user-info__input--age" required>
+                                <option value="early">초반</option>
+                                <option value="mid">중반</option>
+                                <option value="late">후반</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="button user-info__submit">
+                        <span class="button__text">시작하기</span>
+                        <i class="button__icon fas fa-chevron-right"></i>
+                    </button>
+                </form>
+            </div>
+            <div class="screen__background">
+                <span class="screen__background__shape screen__background__shape4"></span>
+                <span class="screen__background__shape screen__background__shape3"></span>    
+                <span class="screen__background__shape screen__background__shape2"></span>
+                <span class="screen__background__shape screen__background__shape1"></span>
+            </div>    
+        </div>
+    </div>
+</body>
+</html>
