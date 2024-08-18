@@ -74,7 +74,8 @@ def index():
             db.session.commit()
 
             # 질문이 끝나면 타입을 저장
-            calculate_baumann_survey(user_key=user_key)
+            baumann_percent = calculate_baumann_survey(user_key=user_key)
+            session['baumann_percent'] = baumann_percent
             
             return redirect(url_for('survey_complete'))
 
@@ -95,11 +96,14 @@ def index():
 @app.route('/survey_complete')
 def survey_complete():
     user_key = session['user_key']
+    baumann_percent = session['baumann_percent']
+    
+
     user_filename = 'UserAnswer.db'
     conn = db_connection(user_filename)
     qa = conn.execute('SELECT baumann_type, meta_baumann_type FROM user WHERE user_key =?', (user_key, )).fetchone()
     conn.close()
-    return render_template('survey_complete.html', baumann_type = qa['baumann_type'], meta_baumann_type = qa['meta_baumann_type'])
+    return render_template('survey_complete.html', baumann_type = qa['baumann_type'], meta_baumann_type = qa['meta_baumann_type'], baumann_percent = baumann_percent)
 
 @app.route('/logout',methods=['GET'])
 def logout():

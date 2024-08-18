@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "poppins", sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #ddd;
+}
+
+.skills_bar{
+    width: 600px;
+    background: #fff;
+    padding: 2rem 2.5rem;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0 ,0.2);
+    border-radius: 10px;
+}
+
+.skills_bar .bar{
+    margin:  2.2rem 0;
+}
+
+.skills_bar .bar:first-child{
+    margin-top: 0px;
+}
+
+.skills_bar .bar .info{
+    margin-bottom: 5px;
+}
+
+.skills_bar .bar .span{
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.progress_line{
+    height: 12px;
+    width: 100%;
+    background : #f0f0f0;
+    border-radius: 10px;
+    position: relative;
+    transform: scaleX(0);
+    animation: animate 1s cubic-bezier(1, 0, 0.5, 1) forwards;
+    transform-origin: left;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05), 
+    0px 1px rgba(255, 255, 255, 0.8);
+}   
+
+@keyframes animate{
+    100%{
+        transform: scaleY(1);
+    }
+}
+
+.progress_line span{
+    height: 100%;
+    width: 80%;
+    background: #8834db;
+    position: absolute;
+    border-radius: 10px;
+    transform: scaleX(0);
+    animation: animate 1s 1s cubic-bezier(1, 0, 0.5, 1) forwards;
+    transform-origin: left;
+}
+
+.progress_line.html span{
+    width: 95%;
+}
+
+.progress_line.css span{
+    width: 66%;
+}
+
+.bar .progress_line span::before{
+    position: absolute;
+    content: "";
+    height: 0;
+    width: 0;
+    border: 7px solid transparent;
+    border-bottom-width: 0;
+    border-right-width: 0;
+    border-top-color: #000;
+    right: 0;
+    top: -10px;
+}
+
+.bar .progress_line span::after{
+    position: absolute;
+    right: 0;
+    top: -35px;
+    background: #000;
+    color: #fff;
+    padding: 1px 8px;
+    border-radius: 3px;
+}
+
+.progress_line.html span::after{
+    content: "95%";
+}
+
+.progress_line.css span::after{
+    content: "66%";
+}

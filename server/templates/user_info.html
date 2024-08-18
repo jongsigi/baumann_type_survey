@@ -10,10 +10,15 @@
     <div class="container">
         <div class="screen">
             <div class="screen__content">
+                <div class="title-form">
+                    <div class="title">
+                        피부 MBTI 스무고개
+                    </div>
+                </div>
                 <form method="post" action="/user_info" class="user-info-form">
                     <div class="user-info__field">
                         <i class="login__icon fas fa-venus-mars"></i>
-                        <label for="gender" class="user-info__label">Gender:</label>
+                        <label for="gender" class="user-info__label">성별</label>
                         <select id="gender" name="gender" class="user-info__input" required>
                             <option value="male">남성</option>
                             <option value="female">여성</option>
@@ -21,7 +26,7 @@
                     </div>
                     <div class="user-info__field">
                         <i class="login__icon fas fa-birthday-cake"></i>
-                        <label for="age" class="user-info__label">Age:</label>
+                        <label for="age" class="user-info__label">나이</label>
                         <div class="user-info__age-group">
                             <select id="age_decade" name="age_decade" class="user-info__input user-info__input--age" required>
                                 <option value="10">10대</option>

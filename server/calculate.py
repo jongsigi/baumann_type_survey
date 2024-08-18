@@ -64,8 +64,15 @@ def calculate_baumann_survey(user_key):
     # user_baumann_output 값 MBTI 형식으로 전환
     num_category = int(user_baumann_output.shape[1]/2)
     baumann_type_list = []
+    baumann_per_list = [ ["O", "D"], ["S", "R"], ["P", "N"], ["W", "T"] ]
     for cat in range(num_category):
-        if user_baumann_output.iloc[0, 2*cat] > user_baumann_output.iloc[0, 2*cat+1]:
+        first_baumann_value = user_baumann_output.iloc[0, 2*cat]
+        second_baumann_value = user_baumann_output.iloc[0, 2*cat+1] 
+        percent_baumann_value = round(first_baumann_value / (first_baumann_value + second_baumann_value) * 100)
+        
+        baumann_per_list[cat].append(percent_baumann_value)
+
+        if first_baumann_value > second_baumann_value:
             baumann_type_list.append(0)
         else:
             baumann_type_list.append(1)
@@ -90,5 +97,7 @@ def calculate_baumann_survey(user_key):
     output_db.commit()
     output_db.close()
     input_db.close()
+
+    return baumann_per_list
 
 

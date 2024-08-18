@@ -12,8 +12,12 @@
     <div class="container">
         <div class="screen">
             <div class="screen__content">
-                <h1 class="question-title">Question</h1>
-                <p class="question-text">{{ question }}</p>
+                <!-- <div class="question-title">Question</div> -->
+                <div class="question-title">
+                    <div class="question-title-inner">
+                        <span class="question-title-span">{{ question }}</span>
+                    </div>
+                </div>
                 <form method="post" class="question-form">
                     {% for answer in answers %}
                     <div class="question-form__field">
