@@ -90,7 +90,7 @@ body {
   margin: 0 auto;
   background: #fff;
   font-size: 18px;
-  padding: 12px 15px;
+  padding: 8px 15px;
   border-radius: 26px;
   border: 1px solid #D4D3E8;
   display: block;
@@ -99,7 +99,7 @@ body {
   color: #000;
   box-shadow: 0px 2px 2px #5C5696;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .survey-complete {
@@ -121,7 +121,7 @@ body {
 .survey-result {
     font-size: 16px;
     color: #707070;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .baumann-type {
@@ -130,7 +130,7 @@ body {
 }
 
 .survey-button {
-    margin-top: 10px;
+    margin-top: 15px;
     background: #fff;
     font-size: 14px;
     padding: 16px 20px;
@@ -200,18 +200,12 @@ body {
 }
 
 .progress_line span{
-  left: 0;
   height: 100%;
   background: #8834db;
   position: absolute;
   border-radius: 10px;
   transform: scaleX(0);
   animation: animate 1s 1s cubic-bezier(1, 0, 0.5, 1) forwards;
-  transform-origin: left;
-}
-
-.progress_line.percent span{
-  width: 95%;
 }
 
 /* .bar .progress_line span::before{
@@ -227,12 +221,23 @@ body {
   top: -10px;
 } */
 
-.bar .progress_line span::after{
+.bar .progress_line .left_percent::after{
   width: 15px;
   font-size: 10px;
   position: absolute;
-  right: 0;
-  left: 96.5px;
+  left: 94.5px;
+  top: -20px;
+  background: #000;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+
+.bar .progress_line .right_percent::after{
+  width: 15px;
+  font-size: 10px;
+  position: absolute;
+  right: 94.5px;
   top: -20px;
   background: #000;
   color: #fff;

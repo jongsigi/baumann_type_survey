@@ -91,7 +91,7 @@ def index():
         session['current_question'] = 0
         return 'No more questions available!'
 
-    return render_template('index.html', question=qa['question'], answers=[qa['answer_0'], qa['answer_1'], qa['answer_2'], qa['answer_3']], user_id=session['user_id'])
+    return render_template('index.html', question=qa['question'], answers=[qa['answer_0'], qa['answer_1'], qa['answer_2'], qa['answer_3']], user_id=session['user_id'], question_count=session['current_question'])
 
 @app.route('/survey_complete')
 def survey_complete():

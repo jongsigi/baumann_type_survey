@@ -14,9 +14,9 @@
             <div class="screen__content">
                 <div class="survey-complete">
                     <div class="title">
-                        <h1 class="survey-title">Survey Complete!</h1>
+                        <h1 class="survey-title">피부 MBTI 결과</h1>
                     </div>
-                    <p class="survey-message">Thank you for your participation</p>
+                    <!-- <p class="survey-message">Thank you for your participation</p> -->
                     <p class="survey-result">스스로 생각하는 피부타입은 <span class="baumann-type">{{meta_baumann_type}}</span></p>
                     <p class="survey-result">당신의 피부타입은 <span class="baumann-type">{{baumann_type}}</span></p>
                 </div>
@@ -28,9 +28,21 @@
                                 <span class="left_percent_value">{{percent.0}}</span>
                                 <span class="right_percent_value">{{percent.1}}</span>
                             </div>
+                            {% if percent.2 > 50%}
                             <div class="progress_line percent">
-                                <span style="width: {{percent.2}}%;" data-percent="{{ percent.2 }}"></span>
+                                <span class="left_percent" style="
+                                    width: {{ percent.2}}%; 
+                                    transform-origin:left; 
+                                    left:0;" data-percent="{{ percent.2 }}"></span>
                             </div>
+                            {% else %}
+                            <div class="progress_line percent">
+                                <span class="right_percent" style="
+                                    width: {{ 100 - percent.2}}%; 
+                                    transform-origin:right; 
+                                    right:0;" data-percent="{{ 100 - percent.2 }}"></span>
+                            </div>
+                            {% endif %}
                         </div>
                     </div>
                     {% endfor %}
