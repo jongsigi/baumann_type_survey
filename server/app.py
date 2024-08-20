@@ -13,14 +13,17 @@ def db_connection(db_filename):
     conn.row_factory = sqlite3.Row    
     return conn
 
+def initialize_app(app):
+    # One-time setup code here
+    print("Application initialized")
+    with app.app_context():
+        db.create_all()
+
 app = Flask(__name__)
-CORS(app)
 app.config.from_object(Config)
 db.init_app(app)
 
-@app.before_first_request
-def create_tables():
-    db.create_all()
+initialize_app(app)  # Moved the initialization here
 
 @app.before_request
 def before_request():
@@ -73,7 +76,7 @@ def index():
             db.session.add(new_answer)
             db.session.commit()
 
-            # 질문이 끝나면 타입을 저장
+            # Store Baumann survey result
             baumann_percent = calculate_baumann_survey(user_key=user_key)
             session['baumann_percent'] = baumann_percent
             
@@ -98,19 +101,16 @@ def survey_complete():
     user_key = session['user_key']
     baumann_percent = session['baumann_percent']
     
-
     user_filename = 'UserAnswer.db'
     conn = db_connection(user_filename)
     qa = conn.execute('SELECT baumann_type, meta_baumann_type FROM user WHERE user_key =?', (user_key, )).fetchone()
     conn.close()
-    return render_template('survey_complete.html', baumann_type = qa['baumann_type'], meta_baumann_type = qa['meta_baumann_type'], baumann_percent = baumann_percent)
+    return render_template('survey_complete.html', baumann_type=qa['baumann_type'], meta_baumann_type=qa['meta_baumann_type'], baumann_percent=baumann_percent)
 
-@app.route('/logout',methods=['GET'])
+@app.route('/logout', methods=['GET'])
 def logout():
     session.clear()
     return redirect(url_for('user_info'))
 
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
     app.run(debug=True, port=8080)
