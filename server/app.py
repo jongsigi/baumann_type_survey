@@ -92,7 +92,7 @@ def index():
 
     if qa is None:
         session['current_question'] = 0
-        return 'No more questions available!'
+        return render_template('user_info.html')
 
     return render_template('index.html', question=qa['question'], answers=[qa['answer_0'], qa['answer_1'], qa['answer_2'], qa['answer_3']], user_id=session['user_id'], question_count=session['current_question'])
 
@@ -113,4 +113,4 @@ def logout():
     return redirect(url_for('user_info'))
 
 if __name__ == '__main__':
-    app.run(debug=True, port=8080)
+    app.run(debug=True, host='0.0.0.0', port=5000)
