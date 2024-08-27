@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Survey Complete</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='survey_complete.css') }}">
+    <script src="https://kit.fontawesome.com/e93843c18e.js" crossorigin="anonymous"></script>
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 </head>
 
 <body>
@@ -17,7 +19,7 @@
                         <h1 class="survey-title">피부 MBTI 결과</h1>
                     </div>
                     <!-- <p class="survey-message">Thank you for your participation</p> -->
-                    <p class="survey-result">스스로 생각하는 피부타입은 <span class="baumann-type">{{meta_baumann_type}}</span></p>
+                    <!-- <p class="survey-result">나는 <span class="baumann-type">{{meta_baumann_type}}</span> 타입이라고 생각하지만</p> -->
                     <p class="survey-result">당신의 피부타입은 <span class="baumann-type">{{baumann_type}}</span></p>
                 </div>
                 <div class="skills_bar">
@@ -47,9 +49,14 @@
                     </div>
                     {% endfor %}
                 </div>
+                <div class="link-icon-box">
+                    <input type="button" id="btnKakao" class="link-icon kakao" onclick="fn_sendFB('kakaotalk');return false;"/> 
+                    <input type="button" id="btnTwitter" class="link-icon twitter" onclick="fn_sendFB('twitter');return false;"/> 
+                    <input type="button" id="btnFacebook" class="link-icon facebook" onclick="fn_sendFB('facebook');return false;"/> 
+                </div>
                 <div class="button_box">
-                    <button class="button survey-button" type="button" onclick="location.href='/logout'">Retry
-                        Survey</button>
+                    <button class="button survey-button" type="button" onclick="location.href='/logout'">
+                        <i class="fa-solid fa-rotate-right"></i>    다시하기</button>
                 </div>
             </div>
 
@@ -61,6 +68,49 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function fn_sendFB(sns) {
+            var thisUrl = document.URL;
+            var snsTitle = "피부 MBTI 결과 공유하기";
+            if( sns == 'facebook' ) {
+                var url = "http://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(thisUrl);
+                window.open(url, "", "width=486, height=286");
+            }
+            else if( sns == 'twitter' ) {
+                var url = "http://twitter.com/share?url="+encodeURIComponent(thisUrl)+"&text="+encodeURIComponent(snsTitle);
+                window.open(url, "tweetPop", "width=486, height=286,scrollbars=yes");
+            }
+            else if( sns == 'band' ) {
+                var url = "http://www.band.us/plugin/share?body="+encodeURIComponent(snsTitle)+"&route="+encodeURIComponent(thisUrl);
+                window.open(url, "shareBand", "width=400, height=500, resizable=yes");
+            } 
+        }
+        function fn_sendFB(sns) {
+            var thisUrl = document.URL;
+            var snsTitle = "피부 MBTI 결과 공유하기";
+            
+            if( sns == 'kakaotalk' ) {
+                // 사용할 앱의 JavaScript 키 설정
+                Kakao.init('fbc839145e7ae894ea4b8170225a691a');
+                
+                // 카카오링크 버튼 생성
+                Kakao.Link.createDefaultButton({
+                    container: '#btnKakao', // HTML에서 작성한 ID값
+                    objectType: 'feed',
+                    content: {
+                    title: "피부 MBTI 결과 공유하기", // 보여질 제목
+                    description: "피부 MBTI 결과 공유하기", // 보여질 설명
+                    imageUrl: thisUrl, // 콘텐츠 URL
+                    link: {
+                        mobileWebUrl: thisUrl,
+                        webUrl: thisUrl
+                    }
+                    }
+                });
+            }
+        }
+    </script>
 </body>
 
 </html>
