@@ -75,10 +75,6 @@ def index():
             new_answer = UserAnswer(user_key=user_key, **answer_data)
             db.session.add(new_answer)
             db.session.commit()
-
-            # Store Baumann survey result
-            baumann_percent = calculate_baumann_survey(user_key=user_key)
-            session['baumann_percent'] = baumann_percent
             
             return redirect(url_for('survey_complete', u=user_key))
 
@@ -98,9 +94,13 @@ def index():
 
 @app.route('/survey_complete')
 def survey_complete():
+    if request.args.get('u') is None:
+        return redirect(url_for('user_info'))
+    
     user_key =request.args.get('u')
     # user_key = session['user_key'] #세션이 아니라 링크를 타고 user_key를 조회해야함.
-    baumann_percent = session['baumann_percent']
+    # Store Baumann survey result
+    baumann_percent = calculate_baumann_survey(user_key=user_key)
     
     user_filename = 'UserAnswer.db'
     conn = db_connection(user_filename)

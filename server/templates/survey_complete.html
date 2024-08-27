@@ -84,13 +84,8 @@
             else if( sns == 'band' ) {
                 var url = "http://www.band.us/plugin/share?body="+encodeURIComponent(snsTitle)+"&route="+encodeURIComponent(thisUrl);
                 window.open(url, "shareBand", "width=400, height=500, resizable=yes");
-            } 
-        }
-        function fn_sendFB(sns) {
-            var thisUrl = document.URL;
-            var snsTitle = "피부 MBTI 결과 공유하기";
-            
-            if( sns == 'kakaotalk' ) {
+            }
+            else if( sns == 'kakaotalk' ) {
                 // 사용할 앱의 JavaScript 키 설정
                 Kakao.init('fbc839145e7ae894ea4b8170225a691a');
                 
