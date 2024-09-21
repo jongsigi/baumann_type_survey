@@ -1,6 +1,7 @@
 @font-face {
-  font-family: 'GmarketSansMedium';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-family: "GmarketSansMedium";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -96,7 +97,7 @@ body {
   margin: 0 auto;
   background: #fff;
   font-size: 18px;
-  padding: 8px 15px;
+  padding: 4px 15px;
   border-radius: 26px;
   border: 1px solid #d4d3e8;
   display: block;
@@ -132,19 +133,21 @@ body {
 
 .baumann-type {
   font-weight: bold;
-  color: #000; /* Accent color to highlight the type */
+  font-size: 1.25rem;
+  color: #8834db; /* Accent color to highlight the type */
 }
 
 .survey-button {
+  width: 216px;
   margin-top: 5px;
+  margin-bottom: 5px;
   background: #fff;
   font-size: 14px;
-  padding: 16px 20px;
+  padding: 8px 10px;
   border-radius: 26px;
   border: 1px solid #d4d3e8;
   text-transform: uppercase;
   font-weight: 700;
-  color: #4c489d;
   box-shadow: 0px 2px 2px #5c5696;
   cursor: pointer;
   transition: 0.2s;
@@ -267,18 +270,18 @@ body {
   display: flex;
 }
 
-.link-icon-box{
+.link-icon-box {
   display: flex;
   justify-content: center;
   position: relative;
   margin-top: 10px;
 }
 
-.link-icon { 
+.link-icon {
   width: 45px;
   height: 45px;
-  border:none;
-  background-color:transparent;
+  border: none;
+  background-color: transparent;
   margin-right: 10px;
 }
 
@@ -290,7 +293,15 @@ body {
   transform: translateY(-3px);
 }
 
-
-.link-icon.twitter { background-image: url(./images/icon-twitter.png); background-repeat: no-repeat; }
-.link-icon.facebook { background-image: url(./images/icon-facebook.png); background-repeat: no-repeat; } 
-.link-icon.kakao { background-image: url(./images/icon-kakao.png); background-repeat: no-repeat; }
+.link-icon.twitter {
+  background-image: url(./images/icon-twitter.png);
+  background-repeat: no-repeat;
+}
+.link-icon.facebook {
+  background-image: url(./images/icon-facebook.png);
+  background-repeat: no-repeat;
+}
+.link-icon.kakao {
+  background-image: url(./images/icon-kakao.png);
+  background-repeat: no-repeat;
+}
